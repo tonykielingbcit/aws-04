@@ -1,0 +1,215 @@
+@charset "utf-8";
+
+/* Box Sizing Reset */
+html {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  /* arial, helvetiv and san-serif just in case */
+  scroll-behavior: smooth;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+img {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+.container {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template: 9rem 1fr 3.5rem / 1fr;
+  grid-template-areas:
+      "header" 
+      "main"
+      "footer";
+  width: 100%;
+  min-height: 100vh;
+  background-color: lightslategray;
+  /* background: linear-gradient(
+    to top,
+    #282c34,
+    lightgray
+  ); */
+}
+
+
+header {
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 9rem;
+  border-bottom: 1px solid #282c34;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightslategray;
+
+}
+
+
+form {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  justify-content: center ;
+  align-items: center;
+  max-width: 97%;
+}
+
+.description {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.description > label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.description > input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+}
+.description > input:focus {
+  background-color: lightblue;
+  outline: 2px solid blue;
+}
+::placeholder {
+  color: lightslategray;
+  font-weight: 300;
+}
+form > button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: lightgreen;
+  color: darkblue;
+  font-size: large;
+  font-weight: bold;
+  border: 2px solid darkgreen;
+  border-radius: 8px;
+}
+form > button:hover {
+  box-shadow:  0 0 5px 2px greenyellow;
+
+}
+
+
+main {
+  grid-area: main;
+  /* margin: auto; */
+  padding-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.container-message {
+  display: flex;
+  justify-content: center;
+}
+.container-message-text {
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  font-weight: bold;
+}
+.error {
+  background-color: lightpink;
+  color: darkred;
+  border: 3px solid darkred;
+}
+.success {
+  background-color: lightgoldenrodyellow;
+  color: green;
+  border: 3px solid darkgreen;
+}
+.container-message > button {
+  margin-left: 0.5rem;
+  border-radius: 7px;
+}
+.container-message > button:hover {
+  font-weight: bold;
+  background-color: lightcoral;
+  border: none;
+}
+
+.container-images {
+  border: 1px solid #282c34;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  width: 35%;
+  height: 10rem;
+  min-width: 480px;
+}
+.container-images > .image-file {
+  /* https://developer.mozilla.org/en-US/docs/Learn/CSS/Howto/Fill_a_box_with_an_image */
+  /* width: fit-content; */
+  object-fit: contain;
+  max-height: 9rem;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+.container-images > .image-details {
+  width: 47%;
+  text-align: center;
+  color: #282c34;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.image-details-dt {
+  font-weight: 600;
+  color: darkslategray;
+}
+.image-details-desc {
+  font-weight: 900;
+}
+.remove-image-bt {
+  background-color: gray;
+  border: none;
+  border-radius: 4px;
+}
+.remove-image-bt:hover {
+  background-color: lightcoral;
+  font-weight: bold;
+  color: darkred;
+}
+
+
+.no-images-message {
+  font-weight: bold;
+  font-size: xx-large;
+  color: lime;
+}
+
+/*** footer ***/
+footer {
+  grid-area: footer;
+  padding-right: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-top: 1px solid darkgray;
+}
