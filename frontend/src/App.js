@@ -28,8 +28,8 @@ function App() {
     // frontend checking
     const fileSize = file.size;
     const oneMB = 1048576;
-    if (fileSize > oneMB) {
-      alert(`Please, update files smaller than 1MB. \nYour current file is about ${Math.round(fileSize / oneMB)}MB volume.`);
+    if (fileSize > oneMB * 5) {
+      alert(`Please, update files smaller than 5MB. \nYour current file is about ${Math.round(fileSize / oneMB)}MB volume.`);
       return;
     }
 
@@ -44,7 +44,7 @@ function App() {
         headers: {"Content-type": "multipart/form-data"}
       }
     );
-    
+// console.log("sendData= ", sendData)
     if (sendData.data.error) {
       setMessageClass("error");
       setMessage(sendData.data.error);
@@ -164,8 +164,25 @@ function App() {
           ? 
             images.map((e, i) => (
               <div key={i} className = "container-images">
-                {/* <img src={`./images/${e.file_name}`} alt={e.fileName} className = "image-file"/> */}
-                <img src={e.url} alt={e.fileName} className = "image-file"/>
+              {console.log("whats is e:: ", e)}
+              {/*  300 250 170 */}
+                <img 
+                  // src = {`${e.url[2]}`} 
+                  alt = {`${e.description}`}
+                  // srcSet = {
+                  //   `${e.url[0]} 300w, 
+                  //    ${e.url[1]} 250w,
+                  //    ${e.url[2]} 170w`}
+                  srcSet = {
+                    `${e.url[0]} 1200w, 
+                     ${e.url[1]} 700w,
+                     ${e.url[2]} 000w`}
+                  // sizes = "(max-width: 559px) calc(100vw - 110px),
+                  //     (max-width: 776px) calc(49vw - 110px),
+                  //     (min-width: 320px) 320px"
+                  className = "image-file"
+                />
+
                 <div className = "image-details">
                   <div>
                     <p className = "image-details-dt">{formatDate(e.created)}</p>

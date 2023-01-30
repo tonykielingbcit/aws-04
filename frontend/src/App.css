@@ -23,7 +23,7 @@ img {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template: 9rem 1fr 3.5rem / 1fr;
+  grid-template: 9.5rem 1fr 3.5rem / 1fr;
   grid-template-areas:
       "header" 
       "main"
@@ -31,11 +31,6 @@ img {
   width: 100%;
   min-height: 100vh;
   background-color: lightslategray;
-  /* background: linear-gradient(
-    to top,
-    #282c34,
-    lightgray
-  ); */
 }
 
 
@@ -45,7 +40,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 9rem;
+  height: 9.5rem;
   border-bottom: 1px solid #282c34;
   display: flex;
   justify-content: center;
@@ -68,13 +63,15 @@ form {
 .description {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .description > label {
   font-weight: bold;
-  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .description > input {
@@ -94,6 +91,7 @@ form {
 }
 form > button {
   margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   background-color: lightgreen;
   color: darkblue;
@@ -155,22 +153,23 @@ main {
   margin: 0.5rem 0;
   display: flex;
   justify-content: space-between;
-  width: 35%;
-  height: 10rem;
-  min-width: 480px;
+  /* width: 35%; */
+  /* height: 10rem; */
+  width: 95%;
 }
 .container-images > .image-file {
   /* https://developer.mozilla.org/en-US/docs/Learn/CSS/Howto/Fill_a_box_with_an_image */
   /* width: fit-content; */
   object-fit: contain;
-  max-height: 9rem;
+  max-height: 7rem;
+  max-width: 30%;
   margin: auto;
   display: flex;
   align-items: center;
   padding: 4px;
 }
 .container-images > .image-details {
-  width: 47%;
+  width: 70%;
   text-align: center;
   color: #282c34;
 
@@ -188,7 +187,7 @@ main {
 .remove-image-bt {
   background-color: gray;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 .remove-image-bt:hover {
   background-color: lightcoral;
@@ -212,4 +211,55 @@ footer {
   align-items: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   border-top: 1px solid darkgray;
+}
+
+
+@media screen and (min-width: 500px) {
+  .container {
+    grid-template: 9rem 1fr 3.5rem / 1fr;
+    grid-template-areas:
+        "header" 
+        "main"
+        "footer";
+    margin-top: 1rem;
+  }
+  header {
+    height: 9rem;;
+  }
+  form > button {
+    margin-bottom: 0;
+  }
+
+  .description {
+    flex-direction: row;
+  }
+  .description > label {
+    margin-bottom: 0;
+    margin-right: 0.7rem;
+  }
+  
+  .container-images {
+    width: 95%;
+    max-width: 600px;
+    min-height: 7rem;
+  }
+  .container-images > .image-file {
+    max-height: 10rem;
+    max-width: 45%;
+    padding: 1rem;
+  }
+  .container-images > .image-details {
+    width: 55%;
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  .container-images {
+    max-width: 700px;
+    min-height: 9rem;
+  }
+  .container-images > .image-file {
+    max-height: 12rem;
+  }
 }

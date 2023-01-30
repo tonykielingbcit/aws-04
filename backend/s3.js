@@ -1,4 +1,6 @@
-import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+"use strict";
+
+import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import {getSignedUrl as gsURL} from "@aws-sdk/s3-request-presigner";
 
 
@@ -34,7 +36,20 @@ export async function uploadImage(imageBuffer, imageName, mimetype) {
   
     return data;
 };
+
+
+export async function deleteImage(imageName) {
+  // Create params that the S3 client will use to delete the image
+  const deleteParams = {
+    Bucket: bucketName,
+    Key: imageName
+  };
   
+  // Delete the image to S3
+  const data = await s3Client.send(new DeleteObjectCommand(deleteParams));
+  
+  return data;
+};
 
 
 export async function getSignedUrl(fileName) {

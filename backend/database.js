@@ -1,3 +1,6 @@
+"use strict";
+
+
 import mysql from "mysql2";
 import * as dotenv from "dotenv";
 
