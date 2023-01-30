@@ -40,7 +40,7 @@ const doSignedUrl = async fileName => {
 
 app.get("/api/images", async (req, res) => {
     const images = await getImages();
-
+// console.log("images ", images)
     for (const image of images)
         // image.url = await s3.getSignedUrl(image.file_name);
         image.url = await doSignedUrl(image.file_name);
