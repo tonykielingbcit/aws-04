@@ -28,7 +28,7 @@ function App() {
     // frontend checking
     const fileSize = file.size;
     const oneMB = 1048576;
-    if (fileSize > oneMB * 5) {
+    if (fileSize > oneMB) {
       alert(`Please, update files smaller than 5MB. \nYour current file is about ${Math.round(fileSize / oneMB)}MB volume.`);
       return;
     }
@@ -164,24 +164,25 @@ function App() {
           ? 
             images.map((e, i) => (
               <div key={i} className = "container-images">
-              {console.log("whats is e:: ", e)}
-              {/*  300 250 170 */}
-                <img 
-                  // src = {`${e.url[2]}`} 
+                <img src={`${e.url[1]}`} alt={e.fileName} className = "image-file"/>
+                {/* {console.log("whats is e:: ", e)} */}
+                {/*  300 250 170 */}
+                {/* <img 
+                  src = {`${e.url[2]}`} 
                   alt = {`${e.description}`}
-                  // srcSet = {
-                  //   `${e.url[0]} 300w, 
-                  //    ${e.url[1]} 250w,
-                  //    ${e.url[2]} 170w`}
                   srcSet = {
-                    `${e.url[0]} 1200w, 
-                     ${e.url[1]} 700w,
-                     ${e.url[2]} 000w`}
+                    `${e.url[0]} 300w, 
+                     ${e.url[1]} 250w,
+                     ${e.url[2]} 170w`}
+                  // srcSet = {
+                  //   `${e.url[0]} 1200w, 
+                  //    ${e.url[1]} 700w,
+                  //    ${e.url[2]} 000w`}
                   // sizes = "(max-width: 559px) calc(100vw - 110px),
                   //     (max-width: 776px) calc(49vw - 110px),
                   //     (min-width: 320px) 320px"
                   className = "image-file"
-                />
+                /> */}
 
                 <div className = "image-details">
                   <div>
