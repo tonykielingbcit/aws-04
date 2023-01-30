@@ -39,13 +39,19 @@ const doSignedUrl = async fileName => {
 
 
 app.get("/api/images", async (req, res) => {
-    const images = await getImages();
-// console.log("images ", images)
-    for (const image of images)
-        // image.url = await s3.getSignedUrl(image.file_name);
-        image.url = await doSignedUrl(image.file_name);
-
-    return res.json(images);
+    try {
+        const images = await getImages();
+    // console.log("images ", images)
+        for (const image of images) {
+            image.url = await doSignedUrl(image.file_name);
+        }
+    // console.log("images ", images)
+    
+        return res.json(images);
+    } catch(err) {
+        console.log("###ERROR getting images: ", err.message || err);
+        return res.json({error: err.message || err});
+    }
 });
 
 
@@ -135,7 +141,7 @@ app.post("/api/images", upload.single("image"), async (req, res) => {
         databaseResult.url = await doSignedUrl(fileName);
         
         res.status(201).send(databaseResult);
-    } catch(error) {
+    } catch(err) {
         console.log("###Error - adding image: ", err.message || err);
         return res.send({ error: err.message || err });
     }
