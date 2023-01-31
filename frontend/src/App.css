@@ -245,6 +245,7 @@ footer {
   }
   .container-images > .image-file {
     max-height: 10rem;
+    /* width: 250px; */
     max-width: 45%;
     padding: 1rem;
   }

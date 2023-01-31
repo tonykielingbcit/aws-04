@@ -87,6 +87,17 @@ app.post("/api/images", upload.single("image"), async (req, res) => {
     // https://blog.logrocket.com/processing-images-sharp-node-js/#resizing-an-image
 
     try {
+        const fileSize = req.headers["content-length"];
+        const oneMB = 1048576;
+
+        if (fileSize > (oneMB * 5)) {
+            // it gets here, but does not return the message below
+            return res.json({
+                error: `Maximum file size is 5MB. Your current file is about ${Math.round(fileSize / oneMB)}MB volume.`
+            });
+        }
+
+
         // Get the data from the post request
         const description = req.body.description;
 
@@ -109,7 +120,8 @@ app.post("/api/images", upload.single("image"), async (req, res) => {
 
         if (originalWidth > maxWidth || originalHeight > maxHeight) {
             for(let i = 0; i < 3; i++) {
-                const width = (i === 0) ? 300 : (i === 1) ? 250 : 170;
+                // const width = (i === 0) ? 300 : (i === 1) ? 250 : 170;
+                const width = (i === 0) ? 250 : (i === 1) ? 170 : 100;
                 // const height = (i === 0) ? 192 : (i === 1) ? 160 : 112;
 
                 const temp = await sharp(fileBuffer)
